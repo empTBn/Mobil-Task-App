@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Prueba</string>
+    <string name="choose_department">Escoje un departamento</string>
+    <string name="choose_project">Escoje un project</string>
 </resources>
