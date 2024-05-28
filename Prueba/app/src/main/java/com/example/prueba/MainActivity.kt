@@ -3,6 +3,7 @@ package com.example.prueba
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -35,5 +36,21 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+    }
+    // Función para validar el usuario y la contraseña
+    private fun validateCredentials(): Boolean {
+        val usernameInput = findViewById<EditText>(R.id.username_input)
+        val passwordInput = findViewById<EditText>(R.id.password_input)
+
+        val username = usernameInput.text.toString()
+        val password = passwordInput.text.toString()
+
+        // Aquí se debe agregar la lógica de validación, por ejemplo:
+        // Se comprueba que el usuario y la contraseña no estén vacíos
+        if (username.isNotEmpty() && password.isNotEmpty()) {
+            // agregar más lógica de validación aquí
+            return true
+        }
+        return false
     }
 }
