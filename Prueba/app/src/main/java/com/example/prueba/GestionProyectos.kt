@@ -40,5 +40,13 @@ class GestionProyectos: AppCompatActivity() {
             // Iniciar la nueva actividad
             startActivity(intent)
         }
+
+        val tareasButton = findViewById<Button>(R.id.tarea_btn)
+        tareasButton.setOnClickListener {
+            // Crear un Intent para abrir la nueva actividad
+            val intent = Intent(this, GestionTareas::class.java)
+            // Iniciar la nueva actividad
+            startActivity(intent)
+        }
     }
 }

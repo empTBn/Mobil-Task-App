@@ -10,49 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
 
         <Button
-            android:id="@+id/crear_proyectos_btn"
+            android:id="@+id/crear_tarea_btn"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
-            android:text="Crear Proyecto"
+            android:text="Crear Tarea"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
         <Button
-            android:id="@+id/consultar_proyectos_btn"
+            android:id="@+id/modificar_tarea_btn"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
-            android:text="Consulta Proyectos"
+            android:text="Modificar Tarea"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
         <Button
-            android:id="@+id/informe_recursos_btn"
+            android:id="@+id/borrar_tarea_btn"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
-            android:text="Informe Recursos"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/tarea_btn"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/green_dark"
-            android:padding="18dp"
-            android:text="Tareas"
+            android:text="Borrar Tarea"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>

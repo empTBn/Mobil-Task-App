@@ -27,6 +27,10 @@
         <activity android:name=".GestionProyectos" />
         <activity android:name=".ConsultarProyecto" />
         <activity android:name=".CrearProyecto" />
+        <activity android:name=".GestionTareas" />
+        <activity android:name=".BorrarTarea" />
+        <activity android:name=".CrearTarea" />
+        <activity android:name=".ModificarTarea" />
         <activity android:name=".AsignarEliminarColab" />
         <activity android:name=".ModificarColab" />
         <activity android:name=".GestionForos" />
