@@ -26,6 +26,9 @@
         <activity android:name=".GestionColaboradores" />
         <activity android:name=".AsignarEliminarColab" />
         <activity android:name=".ModificarColab" />
+        <activity android:name=".GestionForos" />
+        <activity android:name=".CrearForo" />
+        <activity android:name=".Foro" />
     </application>
 
 </manifest>

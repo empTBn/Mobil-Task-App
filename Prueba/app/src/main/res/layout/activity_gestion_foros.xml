@@ -14,35 +14,24 @@
         android:layout_centerInParent="true">
 
         <Button
-            android:id="@+id/gestion_colaboradores_btn"
+            android:id="@+id/crear_foro_btn"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
-            android:text="Gestión de colaboradores"
+            android:text="Crear Foro"
             android:textColor="@color/white"
             android:textSize="20sp"/>
 
         <Button
-            android:id="@+id/gestion_proyectos_btn"
+            android:id="@+id/ingresar_foro_btn"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
-            android:text="Gestión de proyectos"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-
-        <Button
-            android:id="@+id/gestion_foros_btn"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/green_dark"
-            android:padding="18dp"
-            android:text="Gestión de foros"
+            android:text="Ingresar a foro"
             android:textColor="@color/white"
             android:textSize="20sp"/>
     </LinearLayout>
