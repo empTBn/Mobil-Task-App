@@ -53,8 +53,7 @@ class MainActivity : AppCompatActivity() {
         val username = usernameInput.text.toString()
         val password = passwordInput.text.toString()
 
-        // Aquí se debe agregar la lógica de validación, por ejemplo:
-        // Se comprueba que el usuario y la contraseña no estén vacíos
+        // TODO Aquí se debe agregar la lógica de validación
         if (username.isNotEmpty() && password.isNotEmpty()) {
             // agregar más lógica de validación aquí
             return true
