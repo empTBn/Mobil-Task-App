@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Modificar info de usuario"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Ingrese el nombre de usuario"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="14sp"
+            android:id="@+id/username_input" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Email"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="14sp"
+            android:id="@+id/email_input" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Departamento"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            />
+        <Spinner
+            android:id="@+id/department_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:prompt="@string/choose_department"/>
+
+
+        <EditText
+            android:id="@+id/phone_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Teléfono"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            />
+        <RadioGroup
+            android:id="@+id/radioGroupOptions"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/libre_radio_btn"
+                android:layout_marginHorizontal="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="libre"/>
+
+            <RadioButton
+                android:id="@+id/en_proyecto_radio_btn"
+                android:layout_marginHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="en proyecto"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Proyecto"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            />
+        <Spinner
+            android:id="@+id/project_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:prompt="@string/choose_project"/>
+
+        <Button
+            android:id="@+id/modificar_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/green_dark"
+            android:padding="18dp"
+            android:text="Modificar"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/return_btn"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="1dp"
+        android:backgroundTint="@color/green_dark"
+        android:padding="10dp"
+        android:text="Return"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+</RelativeLayout>
