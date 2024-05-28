@@ -24,6 +24,9 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainPageActivity" />
         <activity android:name=".GestionColaboradores" />
+        <activity android:name=".GestionProyectos" />
+        <activity android:name=".ConsultarProyecto" />
+        <activity android:name=".CrearProyecto" />
         <activity android:name=".AsignarEliminarColab" />
         <activity android:name=".ModificarColab" />
         <activity android:name=".GestionForos" />

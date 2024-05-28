@@ -27,6 +27,14 @@ class MainPageActivity: AppCompatActivity(){
             startActivity(intent)
         }
 
+        val gestionProyectosButton = findViewById<Button>(R.id.gestion_proyectos_btn)
+        gestionProyectosButton.setOnClickListener {
+            // Crear un Intent para abrir la nueva actividad
+            val intent = Intent(this, GestionProyectos::class.java)
+            // Iniciar la nueva actividad
+            startActivity(intent)
+        }
+
         val gestionForosButton = findViewById<Button>(R.id.gestion_foros_btn)
         gestionForosButton.setOnClickListener {
             // Crear un Intent para abrir la nueva actividad
