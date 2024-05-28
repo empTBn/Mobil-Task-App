@@ -32,5 +32,13 @@ class GestionProyectos: AppCompatActivity() {
             // Iniciar la nueva actividad
             startActivity(intent)
         }
+
+        val verInformeRecursosButton = findViewById<Button>(R.id.informe_recursos_btn)
+        verInformeRecursosButton.setOnClickListener {
+            // Crear un Intent para abrir la nueva actividad
+            val intent = Intent(this, InformeRecursos::class.java)
+            // Iniciar la nueva actividad
+            startActivity(intent)
+        }
     }
 }

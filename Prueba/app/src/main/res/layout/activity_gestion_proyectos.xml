@@ -34,6 +34,17 @@
             android:text="Consulta Proyectos"
             android:textColor="@color/white"
             android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/informe_recursos_btn"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/green_dark"
+            android:padding="18dp"
+            android:text="Informe Recursos"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
     </LinearLayout>
 
     <Button

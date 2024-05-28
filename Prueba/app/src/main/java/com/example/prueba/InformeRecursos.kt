@@ -11,10 +11,11 @@ class InformeRecursos: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_informe_recursos)
+
         val returnButton = findViewById<Button>(R.id.return_btn)
         returnButton.setOnClickListener {
             // Crear un Intent para abrir la nueva actividad
-            val intent = Intent(this, MainPageActivity::class.java)
+            val intent = Intent(this, GestionProyectos::class.java)
             // Iniciar la nueva actividad
             startActivity(intent)
         }
