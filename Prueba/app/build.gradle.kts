@@ -44,5 +44,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    implementation("com.android.volley:volley:1.2.1")
     androidTestImplementation(libs.androidx.espresso.core)
 }
