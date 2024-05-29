@@ -101,21 +101,6 @@
                 android:text="en proyecto"/>
         </RadioGroup>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Proyecto"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            />
-        <Spinner
-            android:id="@+id/project_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:prompt="@string/choose_project"/>
-
         <Button
             android:id="@+id/modificar_btn"
             android:layout_width="150dp"
