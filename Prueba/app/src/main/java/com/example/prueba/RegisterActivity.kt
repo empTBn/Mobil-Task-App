@@ -112,8 +112,6 @@ class RegisterActivity : AppCompatActivity() {
                 val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spinnerProyecto.adapter = adapter
-            } else {
-                // Si hubo un error en la consulta, puedes manejarlo aquí
             }
         }
 

@@ -171,6 +171,30 @@ object ApiUtils {
         )
         queue.add(jsonObjectRequest)
     }
+    fun modificarEstadoPorNombreUsuario(context: Context, nombreUsuario: String, nuevoEstado: String, callback: (Boolean) -> Unit) {
+        val endpoint = "/modificarEstadoPorNombreUsuario"
+        val url = "$baseUrl$endpoint"
+
+        // Crear el objeto JSON para enviar en la solicitud
+        val jsonObject = JSONObject().apply {
+            put("nombreUsuario", nombreUsuario)
+            put("nuevoEstado", nuevoEstado)
+        }
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.PUT, url, jsonObject,
+            { response ->
+                // Manejar la respuesta aquí si es necesario
+                callback(true)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al modificar el estado por nombre de usuario: ${error.message}", error)
+                callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
 
     fun asignarProyectoAColaborador(context: Context, nombreUsuario: String, idProyecto: String, callback: (Boolean) -> Unit) {
         val endpoint = "/asignarProyectoAColaborador/$nombreUsuario/$idProyecto"
@@ -190,7 +214,6 @@ object ApiUtils {
         )
         queue.add(jsonObjectRequest)
     }
-
 
     //----------------------Consultas-------------------------------
     fun consultarColaboradores(context: Context, callback: (JSONArray?) -> Unit) {
