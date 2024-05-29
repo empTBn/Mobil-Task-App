@@ -48,5 +48,13 @@ class GestionProyectos: AppCompatActivity() {
             // Iniciar la nueva actividad
             startActivity(intent)
         }
+
+        val tableroButton = findViewById<Button>(R.id.tablero_btn)
+        tableroButton.setOnClickListener {
+            // Crear un Intent para abrir la nueva actividad
+            val intent = Intent(this, TableroSeguimiento::class.java)
+            // Iniciar la nueva actividad
+            startActivity(intent)
+        }
     }
 }

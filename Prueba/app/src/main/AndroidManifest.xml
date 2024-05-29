@@ -39,6 +39,7 @@
         <activity android:name=".CrearForo" />
         <activity android:name=".Foro" />
         <activity android:name=".InformeRecursos" />
+        <activity android:name=".TableroSeguimiento" />
     </application>
 
 </manifest>
