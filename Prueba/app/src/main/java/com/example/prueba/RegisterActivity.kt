@@ -161,18 +161,6 @@ class RegisterActivity : AppCompatActivity() {
         val telefono = findViewById<EditText>(R.id.phone_input).text.toString()
         val administrador = false // Definir si el usuario es administrador o no según tu lógica
 
-
-        ApiUtils.obtenerIdProyectoByNombre(this, selectedProjectOption) { idProyecto ->
-            if (idProyecto != null) {
-                // Si la obtención del ID del proyecto fue exitosa, puedes manejar el ID aquí
-                val idProyecto = idProyecto
-                Log.d("Proyecto", "ID del proyecto '$selectedProjectOption': $idProyecto")
-            } else {
-                // Si hubo un error al obtener el ID del proyecto, puedes manejarlo aquí
-                Log.e("Proyecto", "Error al obtener el ID del proyecto '$selectedProjectOption'")
-            }
-        }
-
         ApiUtils.obtenerIdDepartamentoByNombre(this, selectedDepartmentOption) { id ->
             if (id != null) {
                 // Si la obtención del ID del proyecto fue exitosa, puedes manejar el ID aquí
@@ -195,6 +183,29 @@ class RegisterActivity : AppCompatActivity() {
                         this, correo, contrasena, nombre, primerApellido, segundoApellido, cedula,
                         nombreUsuario, idEstadoColaborador, idDepartamento, administrador, telefono
                     ) {
+                        //Si el colaborador están en proyecto, asignarlo
+                        if (idEstadoColaborador == 2){
+                            ApiUtils.obtenerIdProyectoByNombre(this, selectedProjectOption) { idProyecto ->
+                                if (idProyecto != null) {
+                                    // Si la obtención del ID del proyecto fue exitosa
+                                    ApiUtils.asignarProyectoAColaborador(this, nombreUsuario, idProyecto.toString()) { success ->
+                                        if (success) {
+                                            // Maneja el caso de éxito
+                                            Toast.makeText(this, "Proyecto asignado correctamente al colaborador.", Toast.LENGTH_SHORT).show()
+                                        } else {
+                                            // Maneja el caso de error
+                                            Toast.makeText(this, "Ocurrió un error al asignar proyecto al colaborador.", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                                    Log.d("Proyecto", "ID del proyecto '$selectedProjectOption': $idProyecto")
+                                } else {
+                                    // Si hubo un error al obtener el ID del proyecto
+                                    Log.e("Proyecto", "Error al obtener el ID del proyecto '$selectedProjectOption'")
+                                }
+                            }
+
+                        }
+                        //Enviar a la pagina principal
                         val intent = Intent(this, MainPageActivity::class.java)
                         startActivity(intent)
                     }

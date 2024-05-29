@@ -172,6 +172,26 @@ object ApiUtils {
         queue.add(jsonObjectRequest)
     }
 
+    fun asignarProyectoAColaborador(context: Context, nombreUsuario: String, idProyecto: String, callback: (Boolean) -> Unit) {
+        val endpoint = "/asignarProyectoAColaborador/$nombreUsuario/$idProyecto"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.PUT, url, null,
+            { response ->
+                // Maneja la respuesta aquí si es necesario
+                callback(true)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al asignar proyecto al colaborador: ${error.message}", error)
+                callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
+
+
     //----------------------Consultas-------------------------------
     fun consultarColaboradores(context: Context, callback: (JSONArray?) -> Unit) {
         val endpoint = "/consultarColaboradores"
