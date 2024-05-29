@@ -14,8 +14,8 @@
 
         <Button
             android:id="@+id/crear_proyectos_btn"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
@@ -25,8 +25,8 @@
 
         <Button
             android:id="@+id/consultar_proyectos_btn"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
@@ -36,8 +36,8 @@
 
         <Button
             android:id="@+id/informe_recursos_btn"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_width="329dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
@@ -47,12 +47,23 @@
 
         <Button
             android:id="@+id/tarea_btn"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:backgroundTint="@color/green_dark"
             android:padding="18dp"
             android:text="Tareas"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/tablero_btn"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/green_dark"
+            android:padding="18dp"
+            android:text="Tablero de Seguimiento"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
