@@ -171,6 +171,7 @@ object ApiUtils {
         )
         queue.add(jsonObjectRequest)
     }
+    //----------------------Actualizaciones---------------------------------
     fun modificarEstadoPorNombreUsuario(context: Context, nombreUsuario: String, nuevoEstado: String, callback: (Boolean) -> Unit) {
         val endpoint = "/modificarEstadoPorNombreUsuario"
         val url = "$baseUrl$endpoint"
@@ -195,6 +196,79 @@ object ApiUtils {
         )
         queue.add(jsonObjectRequest)
     }
+    fun modificarCorreoPorNombreUsuario(context: Context, nombreUsuario: String, nuevoCorreo: String, callback: (Boolean) -> Unit) {
+        val endpoint = "/modificarCorreoPorNombreUsuario"
+        val url = "$baseUrl$endpoint"
+
+        // Crear el objeto JSON para enviar en la solicitud
+        val jsonObject = JSONObject().apply {
+            put("nombreUsuario", nombreUsuario)
+            put("nuevoCorreo", nuevoCorreo)
+        }
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.PUT, url, jsonObject,
+            { response ->
+                // Manejar la respuesta aquí si es necesario
+                callback(true)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al modificar el correo electrónico por nombre de usuario: ${error.message}", error)
+                callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
+    fun modificarTelefonoPorNombreUsuario(context: Context, nombreUsuario: String, nuevoTelefono: String, callback: (Boolean) -> Unit) {
+        val endpoint = "/modificarTelefonoPorNombreUsuario"
+        val url = "$baseUrl$endpoint"
+
+        // Crear el objeto JSON para enviar en la solicitud
+        val jsonObject = JSONObject().apply {
+            put("nombreUsuario", nombreUsuario)
+            put("nuevoTelefono", nuevoTelefono)
+        }
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.PUT, url, jsonObject,
+            { response ->
+                // Manejar la respuesta aquí si es necesario
+                callback(true)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al modificar el teléfono por nombre de usuario: ${error.message}", error)
+                callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
+    fun modificarDepartamentoPorNombreUsuario(context: Context, nombreUsuario: String, nuevoDepartamento: Int, callback: (Boolean) -> Unit) {
+        val endpoint = "/modificarDepartamentoPorNombreUsuario"
+        val url = "$baseUrl$endpoint"
+
+        // Crear el objeto JSON para enviar en la solicitud
+        val jsonObject = JSONObject().apply {
+            put("nombreUsuario", nombreUsuario)
+            put("nuevoDepartamento", nuevoDepartamento)
+        }
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.PUT, url, jsonObject,
+            { response ->
+                // Manejar la respuesta aquí si es necesario
+                callback(true)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al modificar el departamento por nombre de usuario: ${error.message}", error)
+                callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
+
 
     fun asignarProyectoAColaborador(context: Context, nombreUsuario: String, idProyecto: String, callback: (Boolean) -> Unit) {
         val endpoint = "/asignarProyectoAColaborador/$nombreUsuario/$idProyecto"
@@ -214,6 +288,26 @@ object ApiUtils {
         )
         queue.add(jsonObjectRequest)
     }
+
+    fun eliminarColaboradorDeProyecto(context: Context, nombreUsuario: String, callback: (Boolean) -> Unit) {
+        val endpoint = "/eliminarColaboradorDeProyecto/$nombreUsuario"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.DELETE, url, null,
+            { response ->
+                // Manejar la respuesta aquí si es necesario
+                callback(true)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al eliminar colaborador del proyecto: ${error.message}", error)
+                callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
+
 
     //----------------------Consultas-------------------------------
     fun consultarColaboradores(context: Context, callback: (JSONArray?) -> Unit) {

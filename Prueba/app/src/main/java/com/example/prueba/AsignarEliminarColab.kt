@@ -37,12 +37,7 @@ class AsignarEliminarColab: AppCompatActivity(){
         }
         val eliminarButton = findViewById<Button>(R.id.eliminar_btn)
         eliminarButton.setOnClickListener {
-            if (eliminarColaborador()){
-                Toast.makeText(this, "Colaborador eliminado correctamente", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this, "Colaborador no se ha podido eliminar", Toast.LENGTH_SHORT).show()
-            }
-
+            eliminarColaborador()
         }
 
         val spinnerProyecto = findViewById<Spinner>(R.id.project_spinner)
@@ -113,16 +108,25 @@ class AsignarEliminarColab: AppCompatActivity(){
     }
 
     // Función para eliminar un colaborador de un proyecto
-    private fun eliminarColaborador(): Boolean {
+    private fun eliminarColaborador() {
         val usernameInput = findViewById<EditText>(R.id.username_input)
-
         val username = usernameInput.text.toString()
 
-        // TODO Aquí se debe agregar la lógica de validación
         if (username.isNotEmpty()) {
-            // agregar más lógica de validación aquí
-            return true
+            // Si la obtención del ID del proyecto fue exitosa
+            ApiUtils.eliminarColaboradorDeProyecto(this, username) { success ->
+                if (success) {
+                    // Maneja el caso de éxito
+                    Toast.makeText(this, "Colaborador eliminado correctamente del proyecto.", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Maneja el caso de error
+                    Toast.makeText(this, "Ocurrió un error al eliminado colaborador al proyecto.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            //cambiar el estado a "libre"
+            ApiUtils.modificarEstadoPorNombreUsuario(this, username, "1") { success ->
+            }
         }
-        return false
+
     }
 }
