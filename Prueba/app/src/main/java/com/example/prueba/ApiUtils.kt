@@ -534,23 +534,31 @@ object ApiUtils {
         queue.add(jsonArrayRequest)
     }
 
-    fun consultarTareaPorId(context: Context, idTarea: String, callback: (JSONObject?) -> Unit) {
-        val endpoint = "/consultarTareaById/$idTarea"
-        val url = "$baseUrl$endpoint"
+    fun eliminarTareaPorId(context: Context, idTarea: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
+        val url = "$baseUrl/eliminarTareaPorId/$idTarea"
 
-        val queue = Volley.newRequestQueue(context)
-        val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET, url, null,
-            { response ->
-                Log.d("ApiUtils", "Consultar tarea por ID exitoso: $response")
-                callback(response)
+        val request = object : StringRequest(Request.Method.DELETE, url,
+            Response.Listener { response ->
+                onSuccess(response)
             },
-            { error ->
-                Log.e("ApiUtils", "Error al consultar tarea por ID: ${error.message}", error)
-                callback(null)
+            Response.ErrorListener { error ->
+                val errorMsg = if (error.networkResponse != null) {
+                    val statusCode = error.networkResponse.statusCode
+                    val responseData = String(error.networkResponse.data ?: ByteArray(0))
+                    "Error al eliminar la tarea: $statusCode - $responseData"
+                } else {
+                    "Error desconocido: ${error.localizedMessage}"
+                }
+                onError(errorMsg)
+            }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
             }
-        )
-        queue.add(jsonObjectRequest)
+        }
+
+        Volley.newRequestQueue(context).add(request)
     }
 
     // Otras funciones de utilidad aquí...
