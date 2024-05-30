@@ -9,6 +9,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import org.json.JSONException
@@ -481,6 +482,72 @@ object ApiUtils {
             { error ->
                 Log.e("ApiUtils", "Error al insertar tarea: ${error.message}", error)
                 callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
+    // **************** Modificar Estado Tarea por Id ****************
+    fun modificarEstadoTareaPorId(context: Context, id: String, nuevoEstado: String, onSuccess: (String) -> Unit, onError: (String) -> Unit) {
+        val url = "$baseUrl/modificarEstadoTareaPorId/$id/$nuevoEstado"
+
+        val request = object : StringRequest(Request.Method.PUT, url,
+            Response.Listener { response ->
+                onSuccess(response)
+            },
+            Response.ErrorListener { error ->
+                val errorMsg = if (error.networkResponse != null) {
+                    val statusCode = error.networkResponse.statusCode
+                    val responseData = String(error.networkResponse.data ?: ByteArray(0))
+                    "Error al modificar estado de tarea: $statusCode - $responseData"
+                } else {
+                    "Error desconocido: ${error.localizedMessage}"
+                }
+                onError(errorMsg)
+            }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                return headers
+            }
+        }
+
+        Volley.newRequestQueue(context).add(request)
+    }
+
+    // **************** Consultar Tareas ****************
+    fun consultarTareas(context: Context, callback: (JSONArray?) -> Unit) {
+        val endpoint = "/consultarTareas"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                Log.d("ApiUtils", "Consultar tareas exitoso: $response")
+                callback(response)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al consultar tareas: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+
+    fun consultarTareaPorId(context: Context, idTarea: String, callback: (JSONObject?) -> Unit) {
+        val endpoint = "/consultarTareaById/$idTarea"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                Log.d("ApiUtils", "Consultar tarea por ID exitoso: $response")
+                callback(response)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al consultar tarea por ID: ${error.message}", error)
+                callback(null)
             }
         )
         queue.add(jsonObjectRequest)
