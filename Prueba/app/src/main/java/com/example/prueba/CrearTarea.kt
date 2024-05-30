@@ -69,6 +69,26 @@ class CrearTarea : AppCompatActivity() {
             }
         }
 
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedEstadoTarea = parent.getItemAtPosition(position).toString()
+                Toast.makeText(
+                    this@CrearTarea,
+                    "Selected: $selectedUserName",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Implementar si es necesario
+            }
+        }
+
         // Configurar el Spinner de colaboradores
         val spinnerColaboradores = findViewById<Spinner>(R.id.responable_spinner)
 
@@ -226,10 +246,12 @@ class CrearTarea : AppCompatActivity() {
         }
         Log.d("CrearTarea", "Se selecciona descripción: $descripcion")
 
-        val idEstadoTarea = when (selectedEstadoTarea) {
-            "TODO" -> 1
-            "En progreso" -> 2
-            else -> 3
+        val idEstadoTarea = if (selectedEstadoTarea == "TODO") {
+            1
+        } else if (selectedEstadoTarea == "En progreso") {
+            2
+        } else {
+            3
         }
         Log.d("CrearTarea", "Se selecciona estado de tarea: $idEstadoTarea")
 
