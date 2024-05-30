@@ -22,37 +22,22 @@
             android:textSize="18sp"
             />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Ingrese el nombre del proyecto"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="14sp"
-            android:id="@+id/name_foro_input" />
-
-        <TextView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="378dp"
-            android:layout_marginTop="20dp"
-            android:text="Información de proyectos:"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:layout_marginTop="20dp">
 
-        <Button
-            android:id="@+id/consultar_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:backgroundTint="@color/green_dark"
-            android:padding="18dp"
-            android:text="Consultar"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-
+            <EditText
+                android:id="@+id/proyectos_info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Información de proyectos:"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:editable="true" />
+        </ScrollView>
     </LinearLayout>
+
     <Button
         android:id="@+id/return_btn"
         android:layout_width="130dp"

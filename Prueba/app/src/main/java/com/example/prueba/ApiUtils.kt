@@ -345,6 +345,27 @@ object ApiUtils {
         )
         queue.add(jsonArrayRequest)
     }
+
+    fun consultarColaboradorById(context: Context, idColaborador: Int, callback: (String?) -> Unit) {
+        val endpoint = "/consultarColaboradorById/$idColaborador"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val jsonObject = response.getJSONObject(0)
+                val nombreColaborador = jsonObject.getString("nombre")
+                callback(nombreColaborador)
+            },
+            { error ->
+                Log.e("ApiUtils", "Api call failed: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+
     fun obtenerIdColaboradorByNombreUsuario(context: Context, nombreUsuario: String, callback: (Int?) -> Unit) {
         val endpoint = "/obtenerIdColaboradorByNombreUsuario/$nombreUsuario"
         val url = "$baseUrl$endpoint"
@@ -561,6 +582,26 @@ object ApiUtils {
         Volley.newRequestQueue(context).add(request)
     }
 
+    fun consultarTareasByIdProyecto(context: Context, idProyecto: String, callback: (JSONArray?) -> Unit) {
+        val endpoint = "//consultarTareasByIdProyecto/$idProyecto"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                Log.d("ApiUtils", "Consultar tareas por proyecto exitoso: $response")
+                callback(response)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al consultar tareas por proyecto: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+
+    //************************Consultas Proyectos***********************************
     fun insertarProyecto(context: Context, nombreProyecto: String, recursosNecesarios: String, presupuesto: Int,
                          descripcion: String, idEstadoProyecto: Int, fechaInicio: String,
                          historialCambios: String, idPersonaResponsable : Int, ffechaFin: String,

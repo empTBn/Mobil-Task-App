@@ -30,11 +30,14 @@ class CrearProyecto: AppCompatActivity(){
             startActivity(intent)
         }
 
+        //Si se preciona el botón, se validan datos
         val crearProyectoBtn  = findViewById<Button>(R.id.crear_proyecto_btn)
         crearProyectoBtn .setOnClickListener {
             validar()
         }
 
+        //Como un proyecto puede tener muchos colaboradores, se crea una especie de Spinner casero que despliega varias opciones
+        //Se usan consultas vía API para obtener los datos de los elementos
         val colaboradorTextView = findViewById<TextView>(R.id.colaborador_spinner)
         ApiUtils.consultarColaboradores(this) { colaboradores ->
             if (colaboradores != null) {
@@ -63,6 +66,7 @@ class CrearProyecto: AppCompatActivity(){
             }
         }
 
+        //A diferencia de los otros, este es un Spinner común y corriente
         val spinner = findViewById<Spinner>(R.id.estados_spinner)
         ApiUtils.consultarEstadosProyectos(this) { estados ->
             if (estados != null) {
@@ -113,6 +117,7 @@ class CrearProyecto: AppCompatActivity(){
     }
 
     private fun validar() {
+        //Grupo de variables que extraen y transforman los valores ubicados en pantalla
         val nombreInput = findViewById<EditText>(R.id.name_proyecto_input)
         val recursosInput = findViewById<EditText>(R.id.name_recursos_input)
         val presupuestoInput = findViewById<EditText>(R.id.name_presupuesto_input)
@@ -146,6 +151,7 @@ class CrearProyecto: AppCompatActivity(){
         val colaboradores = colaboradorTextView.text.toString()
         val colaboradoresList = colaboradores.split(",").map { it.trim() }
 
+        //Verificación de que todo esté lleno
         if (nombre.isNotEmpty() && recursos.isNotEmpty() && presupuesto > -1 && descripcion.isNotEmpty() && fecha.isNotEmpty() && responsable.isNotEmpty() && colaboradores.isNotEmpty() && estado.isNotEmpty()) {
             ApiUtils.obtenerIdColaboradorByNombreUsuario(this, responsable) { idResponsable ->
                 if (idResponsable != null) {
@@ -153,6 +159,7 @@ class CrearProyecto: AppCompatActivity(){
                     {
                         Toast.makeText(this, "Proyecto creado exitosamente", Toast.LENGTH_SHORT).show()
 
+                        //Se le asignan a los colaboradores los proyectos
                         ApiUtils.obtenerIdProyectoByNombre(this, nombre) { idProyecto ->
                             if (idProyecto != null) {
                                 colaboradoresList.forEach { colaborador ->
@@ -178,6 +185,7 @@ class CrearProyecto: AppCompatActivity(){
         }
     }
 
+    //Función que genera el Spinner casero
     private fun showMultiSelectDialog(title: String, items: Array<String>, selectedItemsList: MutableList<String>, onSelected: (List<String>) -> Unit) {
         val selectedItems = ArrayList<String>()
         val checkedItems = BooleanArray(items.size) { index ->
