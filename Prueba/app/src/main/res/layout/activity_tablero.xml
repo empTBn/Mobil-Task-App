@@ -20,43 +20,70 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/task_input"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Ingrese una tarea"
-            android:inputType="text"
+            android:text="Proyecto"
+            android:layout_marginTop="25dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:padding="10dp"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
+
+        <Spinner
+            android:id="@+id/project_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:prompt="@string/choose_project" />
 
         <Button
-            android:id="@+id/add_task_btn"
+            android:id="@+id/escoger_btn"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/green_dark"
             android:padding="15dp"
-            android:text="Agregar Tarea"
+            android:text="Escoger proyecto"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/task_scrollview"
-            android:background="@drawable/border">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Por Hacer"
+            android:textSize="20sp"
+            android:padding="8dp" />
 
-            <TableLayout
-                android:id="@+id/task_table"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:stretchColumns="1">
-            </TableLayout>
-        </ScrollView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewEstado1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En Proceso"
+            android:textSize="20sp"
+            android:padding="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewEstado2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finalizadas"
+            android:textSize="20sp"
+            android:padding="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewEstado3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp" />
 
         <Button
             android:id="@+id/return_btn"

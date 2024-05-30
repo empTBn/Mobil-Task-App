@@ -42,7 +42,7 @@ class AsignarEliminarColab: AppCompatActivity(){
 
         val spinnerProyecto = findViewById<Spinner>(R.id.project_spinner)
 
-        // Aquí realiza la llamada a la función de la API para obtener los departamentos
+        // Aquí realiza la llamada a la función de la API para obtener los proyectos
         ApiUtils.consultarProyectos(this) { proyectos ->
             if (proyectos != null) {
                 // Si la consulta fue exitosa, procesa los datos y configura el Spinner

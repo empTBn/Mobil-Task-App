@@ -583,7 +583,7 @@ object ApiUtils {
     }
 
     fun consultarTareasByIdProyecto(context: Context, idProyecto: String, callback: (JSONArray?) -> Unit) {
-        val endpoint = "//consultarTareasByIdProyecto/$idProyecto"
+        val endpoint = "/consultarTareasByIdProyecto/$idProyecto"
         val url = "$baseUrl$endpoint"
 
         val queue = Volley.newRequestQueue(context)
