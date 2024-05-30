@@ -49,7 +49,10 @@ class ConsultarProyecto: AppCompatActivity(){
                                                 val idProyectoT = tarea.getInt("idProyecto")
                                                 if (idProyectoT == idProyecto) {
                                                     val nombreTarea = tarea.getString("nombreTarea")
-                                                    val idEncargado = tarea.getString("idColaborador")
+                                                    val nombreColaborador = tarea.getString("nombre")
+                                                    val primerApellido = tarea.getString("primerApellido")
+                                                    val encargado = "$nombreColaborador $primerApellido"
+
                                                     proyectoInfo.append("   - Tareas: \n")
 
                                                     if(tarea.getInt("idEstadoTarea") == 1){
@@ -60,19 +63,19 @@ class ConsultarProyecto: AppCompatActivity(){
                                                         proyectoInfo.append("   - Finalizadas: \n \t \t \t$nombreTarea\n")
                                                     }
 
-                                                    proyectoInfo.append("   - Encargado: \n \t \t \t$idEncargado\n")
+                                                    proyectoInfo.append("   - Encargado: \n \t \t \t$encargado\n")
                                                 }
                                             } catch (e: JSONException) {
                                                 e.printStackTrace()
                                             }
                                         }
 
-                                        //val idColaborador = tarea.getInt("idColaborador")
-                                        //ApiUtils.consultarColaboradorById(this, idColaborador) { nombreColaborador ->
-                                        //    if(nombreColaborador != null){
-                                        //        proyectoInfo.append("   - Encargado: $nombreColaborador\n")
-                                        //    }
-                                        //}
+                                        /*val idColaborador = tarea.getInt("idColaborador")
+                                        ApiUtils.consultarColaboradorById(this, idColaborador) { nombreColaborador ->
+                                            if(nombreColaborador != null){
+                                                proyectoInfo.append("   - Encargado: $nombreColaborador\n")
+                                            }
+                                        }*/
 
                                         proyectosInfo.add(proyectoInfo.toString())
                                         proyectosInfoText.setText(proyectosInfo.joinToString("\n"))

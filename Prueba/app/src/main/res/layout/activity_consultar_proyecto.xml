@@ -24,17 +24,17 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="378dp"
+            android:layout_height="473dp"
             android:layout_marginTop="20dp">
 
             <EditText
                 android:id="@+id/proyectos_info_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:editable="true"
                 android:text="Información de proyectos:"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                android:editable="true" />
+                android:textSize="15sp" />
         </ScrollView>
     </LinearLayout>
 
