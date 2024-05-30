@@ -7,7 +7,8 @@
 
     <LinearLayout
         android:layout_width="395dp"
-        android:layout_height="746dp"
+        android:layout_height="769dp"
+        android:layout_above="@+id/return_btn"
         android:layout_marginBottom="-54dp"
         android:gravity="center"
         android:orientation="vertical">
@@ -70,22 +71,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Ingrese la fecha de inicio del proyecto"
+            android:hint="Ingrese la fecha de inicio del proyecto (aaaa-mm-dd)"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/name_responsable_input"
+            android:id="@+id/name_fechafin_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Ingrese al responsable del proyecto"
+            android:hint="Ingrese la fecha de finalización del proyecto (aaaa-mm-dd)"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/name_historial_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Inserte el historial de cambios"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Seleccione al responsable:"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <Spinner
+            android:id="@+id/responsable_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:prompt="@string/choose_department" />
 
         <TextView
             android:layout_width="match_parent"
@@ -95,27 +122,17 @@
             android:textColor="@color/black"
             android:textSize="12sp" />
 
-        <Spinner
+        <TextView
             android:id="@+id/colaborador_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:prompt="@string/choose_department" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Seleccione las tareas a participar:"
+            android:background="?attr/selectableItemBackground"
+            android:hint="Seleccione los colaboradores"
+            android:padding="8dp"
             android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="12sp" />
-
-        <Spinner
-            android:id="@+id/tareas_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:prompt="@string/choose_department" />
 
         <TextView
             android:layout_width="match_parent"
@@ -143,30 +160,28 @@
                 android:id="@+id/crear_proyecto_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="0.3"
-                android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/green_dark"
                 android:padding="12dp"
                 android:text="Crear"
                 android:textColor="@color/white"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/return_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="0.3"
-                android:layout_marginStart="8dp"
                 android:backgroundTint="@color/green_dark"
                 android:padding="10dp"
                 android:text="Return"
                 android:textColor="@color/white"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
         </LinearLayout>
-
-
 
 
     </LinearLayout>

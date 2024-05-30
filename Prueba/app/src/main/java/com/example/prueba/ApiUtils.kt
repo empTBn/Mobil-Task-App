@@ -561,5 +561,37 @@ object ApiUtils {
         Volley.newRequestQueue(context).add(request)
     }
 
+    fun insertarProyecto(context: Context, nombreProyecto: String, recursosNecesarios: String, presupuesto: Int,
+                         descripcion: String, idEstadoProyecto: Int, fechaInicio: String,
+                         historialCambios: String, idPersonaResponsable : Int, ffechaFin: String,
+                         callback: (Boolean) -> Unit) {
+        val endpoint = "/insertarProyecto"
+        val url = "$baseUrl$endpoint"
+
+        val jsonObject = JSONObject().apply {
+            put("nombreProyecto", nombreProyecto)
+            put("recursosNecesarios", recursosNecesarios)
+            put("presupuesto", presupuesto)
+            put("descripcion", descripcion)
+            put("idEstadoProyecto", idEstadoProyecto)
+            put("fechaInicio", fechaInicio)
+            put("historialCambios", historialCambios)
+            put("idPersonaResponsable", idPersonaResponsable)
+            put("ffechaFin", ffechaFin)
+        }
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.POST, url, jsonObject,
+            { response ->
+                callback(true)
+            },
+            { error ->
+                callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
+
     // Otras funciones de utilidad aquí...
 }
