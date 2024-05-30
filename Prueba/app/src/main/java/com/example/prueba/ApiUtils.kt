@@ -329,5 +329,80 @@ object ApiUtils {
         queue.add(jsonArrayRequest)
     }
 
+    //----------------------Informes-------------------------------
+    fun consultarInformeGastoPromedioProyectos(context: Context, callback: (String?) -> Unit) {
+        val endpoint = "/consultarInformeGastoPromedioProyectos"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                // Manejar la respuesta aquí
+                callback(response.toString())
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al consultar informe de gasto promedio de proyectos: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+
+    fun consultarInformeGastoPromedioTodosProyectos(context: Context, callback: (String?) -> Unit) {
+        val endpoint = "/consultarInformeGastoPromedioTodosProyectos"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                // Manejar la respuesta aquí
+                callback(response.toString())
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al consultar informe de gasto promedio de todos los proyectos: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+    fun consultarInformeHorasPromedioProyectos(context: Context, callback: (String?) -> Unit) {
+        val endpoint = "/consultarInformeHorasPromedioProyectos"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                callback(response.toString())
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al consultar informe de horas promedio de proyectos: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+
+    fun consultarInformeHorasPromedioTodosProyectos(context: Context, callback: (String?) -> Unit) {
+        val endpoint = "/consultarInformeHorasPromedioTodosProyectos"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                callback(response.toString())
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al consultar informe de horas promedio de todos los proyectos: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+
+
     // Otras funciones de utilidad aquí...
 }
