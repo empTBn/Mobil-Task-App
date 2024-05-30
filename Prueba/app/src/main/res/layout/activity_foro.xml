@@ -19,23 +19,15 @@
             android:text="Bienvenido al Foro"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
             android:layout_height="400dp"
-            android:id="@+id/foro_scrollview"
-            android:background="@drawable/border">>
+            android:id="@+id/foro_recyclerview"
+            android:background="@drawable/border" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Este es el contenido del foro. Aquí puedes poner mucho texto para que sea desplazable."
-                android:textSize="16sp"
-            />
-        </ScrollView>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +36,7 @@
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            android:padding="30dp"
+            android:padding="10dp"
             android:textSize="14sp"
             android:id="@+id/mensaje_input" />
 
@@ -57,14 +49,12 @@
             android:padding="15dp"
             android:text="Enviar"
             android:textColor="@color/white"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/return_btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/green_dark"
             android:padding="10dp"
@@ -72,7 +62,5 @@
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>
-
-
 
 </RelativeLayout>

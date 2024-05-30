@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:padding="16dp">
 
     <LinearLayout
@@ -19,37 +18,50 @@
             android:text="Tablero de Seguimiento"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
-
-        <TableLayout
+        <EditText
+            android:id="@+id/task_input"
             android:layout_width="match_parent"
-            android:layout_height="624dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Ingrese una tarea"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:padding="10dp"
+            android:textSize="14sp" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/add_task_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/green_dark"
+            android:padding="15dp"
+            android:text="Agregar Tarea"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/task_scrollview"
+            android:background="@drawable/border">
 
-            <TableRow
+            <TableLayout
+                android:id="@+id/task_table"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </TableLayout>
+                android:layout_height="wrap_content"
+                android:stretchColumns="1">
+            </TableLayout>
+        </ScrollView>
 
         <Button
             android:id="@+id/return_btn"
             android:layout_width="130dp"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/green_dark"
             android:padding="10dp"
@@ -57,7 +69,4 @@
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>
-
-
-
 </RelativeLayout>
