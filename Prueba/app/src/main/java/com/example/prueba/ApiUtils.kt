@@ -134,6 +134,25 @@ object ApiUtils {
         )
         queue.add(jsonArrayRequest)
     }
+    fun consultarEstadosProyectos(context: Context, callback: (JSONArray?) -> Unit) {
+        val endpoint = "/consultarEstadosProyectos"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                Log.d("ApiUtils", "Consultar estados de proyectos exitoso: $response")
+                callback(response)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al consultar estados de proyectos: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+
 
     //----------------------Colaboradores-------------------------------
 
@@ -268,8 +287,6 @@ object ApiUtils {
         )
         queue.add(jsonObjectRequest)
     }
-
-
     fun asignarProyectoAColaborador(context: Context, nombreUsuario: String, idProyecto: String, callback: (Boolean) -> Unit) {
         val endpoint = "/asignarProyectoAColaborador/$nombreUsuario/$idProyecto"
         val url = "$baseUrl$endpoint"
@@ -308,7 +325,6 @@ object ApiUtils {
         queue.add(jsonObjectRequest)
     }
 
-
     //----------------------Consultas-------------------------------
     fun consultarColaboradores(context: Context, callback: (JSONArray?) -> Unit) {
         val endpoint = "/consultarColaboradores"
@@ -323,6 +339,31 @@ object ApiUtils {
             },
             { error ->
                 Log.e("ApiUtils", "Api call failed: ${error.message}", error)
+                callback(null)
+            }
+        )
+        queue.add(jsonArrayRequest)
+    }
+    fun obtenerIdColaboradorByNombreUsuario(context: Context, nombreUsuario: String, callback: (Int?) -> Unit) {
+        val endpoint = "/obtenerIdColaboradorByNombreUsuario/$nombreUsuario"
+        val url = "$baseUrl$endpoint"
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonArrayRequest = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                try {
+                    // Suponiendo que la respuesta es un array y queremos el primer objeto del array
+                    val jsonObject = response.getJSONObject(0)
+                    val idColaborador = jsonObject.getInt("id")
+                    callback(idColaborador)
+                } catch (e: JSONException) {
+                    Log.e("ApiUtils", "Error al procesar la respuesta JSON: ${e.message}", e)
+                    callback(null)
+                }
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al obtener el ID del colaborador: ${error.message}", error)
                 callback(null)
             }
         )
@@ -403,6 +444,47 @@ object ApiUtils {
         queue.add(jsonArrayRequest)
     }
 
+    //----------------------Tareas-------------------------------
+    fun insertarTarea(
+        context: Context,
+        nombreTarea: String,
+        idProyecto: Int,
+        idEstadoTarea: Int,
+        idColaborador: Int,
+        storyPoints: Int,
+        recursosEconomicos: Double,
+        tiempoEstimado: Int,
+        descripcion: String,
+        callback: (Boolean) -> Unit
+    ) {
+        val endpoint = "/insertarTarea"
+        val url = "$baseUrl$endpoint"
+
+        val jsonObject = JSONObject().apply {
+            put("nombreTarea", nombreTarea)
+            put("idProyecto", idProyecto)
+            put("idEstadoTarea", idEstadoTarea)
+            put("idColaborador", idColaborador)
+            put("storyPoints", storyPoints)
+            put("recursosEconomicos", recursosEconomicos)
+            put("tiempoEstimado", tiempoEstimado)
+            put("descripcion", descripcion)
+        }
+
+        val queue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.POST, url, jsonObject,
+            { response ->
+                // Manejar la respuesta aquí si es necesario
+                callback(true)
+            },
+            { error ->
+                Log.e("ApiUtils", "Error al insertar tarea: ${error.message}", error)
+                callback(false)
+            }
+        )
+        queue.add(jsonObjectRequest)
+    }
 
     // Otras funciones de utilidad aquí...
 }
